@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="custom-control custom-radio ml-3">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio1">攝氏轉換為華氏</label>
+            </div>
+            <div class="custom-control custom-radio ml-3">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio2">華氏轉換為攝氏</label>
+            </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row">
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">1</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">2</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">3</button></div>
+        </div>
+        <div class="row">
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">4</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">5</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">6</button></div>
+        </div>
+        <div class="row">
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">7</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">8</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">9</button></div>
+        </div>
+        <div class="row">
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">0</button></div>
+                <div class="col-4"><button type="button" class="btn btn-light btn-lg btn-block border input-pad">.</button></div>
+        </div>
+    </div>
+    <div class="container mt-5">
+    <div class="input-group">
+            <input type="text" id="input" class="form-control" placeholder="0" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+            <div class="input-group-append" id="button-addon4">
+              <button class="btn btn-outline-secondary" type="button" onclick="doCalc()" id="convert">轉換</button>
+              <button class="btn btn-outline-secondary" type="button" onclick="clearInput()">清除</button>
+            </div>
+          </div>
+    </div>
+    <div class="container mt-5">
+    <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">結果</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" id="result" readonly>
+          </div>
+    </div>
+    
+
+    <!-- convert-c -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+        <script>
+            function doCalc() {
+                var input = document.getElementById("input");
+                var result = document.getElementById("result");
+                
+
+                var r =(input.value *1.8)+32;
+                result.value = r;
+            }
+
+            function clearInput() {
+                var input = document.getElementById("input");
+                var result = document.getElementById("result");
+
+                input.value=" ";
+                result.value=" ";
+            }
+
+            function inputButton() {
+                var input = document.getElementById("input");
+                var text = this.innerHTML;
+                input.value += text;
+                console.log(text);
+            }
+
+            var inputButtons = document.getElementsByClassName("input-pad");
+
+            for (var i = 0;i < inputButtons.length ; i++){
+                inputButtons[i].onclick = inputButton;
+            }
+        </script>
+</body>
+
+</html>
