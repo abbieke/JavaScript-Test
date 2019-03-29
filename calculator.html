@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 bg-light">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="4"><input type="text" class="form-control text-right" id="result" readonly>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="4"><input type="text" class="form-control text-right" id="solut"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block" id="clean">C</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">(</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">)</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">7</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">8</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">9</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">-</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">4</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">5</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">6</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">*</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">1</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">2</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">3</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">/</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button type="button"
+                                    class="btn btn-secondary btn-lg btn-block btn-value">0</button></td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block btn-value">.</button>
+                            </td>
+                            <td><button type="button" class="btn btn-secondary btn-lg btn-block" id="cal">=</button>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function inputButton() {
+            var input = document.getElementById("solut");
+            var text = this.innerHTML;
+            input.value += text;
+            console.log(text);
+        }
+
+        var inputButtons = document.getElementsByClassName("btn-value");
+
+        for (var i = 0; i < inputButtons.length; i++) {
+            inputButtons[i].onclick = inputButton;
+        }
+
+        function clearInput() {
+            var input = document.getElementById("solut");
+            var result = document.getElementById("result");
+
+            input.value = " ";
+            result.value = " ";
+        }
+
+        document.getElementById("clean").onclick = clearInput;
+
+        function doCalc() {
+            var input = document.getElementById("solut");
+            var result = document.getElementById("result");
+
+
+            var r = eval(input.value);
+            result.value = r;
+        }
+
+        document.getElementById("cal").onclick = doCalc;
+    </script>
+
+</body>
+
+</html>
