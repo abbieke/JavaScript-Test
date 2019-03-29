@@ -99,7 +99,6 @@
             var input = document.getElementById("solut");
             var text = this.innerHTML;
             input.value += text;
-            console.log(text);
         }
 
         var inputButtons = document.getElementsByClassName("btn-value");
@@ -119,8 +118,7 @@
         function powerInput() {
             a = 0;
             b = 100;
-            x = Math.floor(Math.random() * 98) + 1;
-            console.log(x);
+            x = Math.floor(Math.random() * 99) + 1;
 
             document.getElementById("result").innerHTML = a + " ~ " + b;
             document.getElementById("btn-gusses").disabled = false;
