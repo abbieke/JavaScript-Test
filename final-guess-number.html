@@ -111,6 +111,32 @@
                 var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
 
                 document.getElementById('answer').innerText = result;
+
+                if (response.authResponse) {
+                    //呼叫FB.api()取得使用者資料
+                    FB.api('/me', { fields: 'id,name,email' }, function (response) {
+                        //這邊就可以判斷取得資料跟網站使用者資料是否一致
+                        var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
+
+                        document.getElementById('answer').innerText = result;
+                    });
+                    //沒授權過應用程式
+                } else {
+                    //呼叫FB.login()請求使用者授權
+                    FB.login(function (response) {
+                        if (response.authResponse) {
+                            FB.api('/me', { fields: 'id,name,email' }, function (response) {
+                                //這邊就可以判斷取得資料跟網站使用者資料是否一致
+                                var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
+
+                                document.getElementById('answer').innerText = result;
+                            });
+                        }
+                        //FB.login()預設只會回傳基本的授權資料
+                        //如果想取得額外的授權資料需要另外設定在scope參數裡面
+                        //可以設定的授權資料可以參考官方文件          
+                    }, { scope: 'email,user_likes' });
+                }
             });
         };
 
@@ -125,9 +151,32 @@
         function checkLoginState() {
             FB.getLoginStatus(function (response) {
                 // statusChangeCallback(response);
-                var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
 
-                document.getElementById('answer').innerText = result;
+                if (response.authResponse) {
+                    //呼叫FB.api()取得使用者資料
+                    FB.api('/me', { fields: 'id,name,email' }, function (response) {
+                        //這邊就可以判斷取得資料跟網站使用者資料是否一致
+                        var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
+
+                        document.getElementById('answer').innerText = result;
+                    });
+                    //沒授權過應用程式
+                } else {
+                    //呼叫FB.login()請求使用者授權
+                    FB.login(function (response) {
+                        if (response.authResponse) {
+                            FB.api('/me', { fields: 'id,name,email' }, function (response) {
+                                //這邊就可以判斷取得資料跟網站使用者資料是否一致
+                                var result = JSON.stringify(response, null, 2);//将字符串转换成json对象
+
+                                document.getElementById('answer').innerText = result;
+                            });
+                        }
+                        //FB.login()預設只會回傳基本的授權資料
+                        //如果想取得額外的授權資料需要另外設定在scope參數裡面
+                        //可以設定的授權資料可以參考官方文件          
+                    }, { scope: 'email,user_likes' });
+                }
             });
         }
     </script>
