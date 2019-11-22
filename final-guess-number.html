@@ -79,6 +79,8 @@
                 </table>
                 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
                 </fb:login-button>
+
+                <pre id="answer"></pre>
             </div>
         </div>
     </div>
@@ -121,6 +123,9 @@
         function checkLoginState() {
             FB.getLoginStatus(function (response) {
                 statusChangeCallback(response);
+                var result = JSON.stringify(JSON.parse(response), null, 2);//将字符串转换成json对象
+
+                document.getElementById('answer').innerText = result;
             });
         }
     </script>
