@@ -77,6 +77,8 @@
                         </tr>
                     </tbody>
                 </table>
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
             </div>
         </div>
     </div>
@@ -91,6 +93,37 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '447702395931854',
+                cookie: true,
+                xfbml: true,
+                version: 'v5.0'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+    </script>
     <script>
         var a = 0;
         var b = 0;
@@ -149,7 +182,6 @@
         }
 
         document.getElementById("btn-gusses").onclick = doGuess;
-
     </script>
 
 </body>
