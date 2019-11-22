@@ -117,16 +117,17 @@
             FB.getLoginStatus(function (response) {
                 statusChangeCallback(response);
             });
-
-            function checkLoginState() {
-                FB.getLoginStatus(function (response) {
-                    statusChangeCallback(response);
-                    var result = JSON.stringify(JSON.parse(response), null, 2);//将字符串转换成json对象
-
-                    document.getElementById('answer').innerText = result;
-                });
-            }
         };
+
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+                var result = JSON.stringify(JSON.parse(response), null, 2);//将字符串转换成json对象
+
+                document.getElementById('answer').innerText = result;
+            });
+        }
     </script>
     <script>
         var a = 0;
